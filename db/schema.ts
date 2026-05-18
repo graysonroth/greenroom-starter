@@ -91,7 +91,10 @@ export const shows = sqliteTable("shows", {
  *
  *  - `dealType` and the structured fields (guarantee, percentage, etc.)
  *    are what the in-app settlement tool reads.
- *  - `dealNotesFreetext` is what Mariana actually trusts.
+ *  - `dealNotesFreetext` is negotiated deal language Mariana enters from the
+ *    agent email; it can be shared in settlement review artifacts.
+ *  - `shows.internalNotes` is venue-only context and should not be exposed to
+ *    the reviewer-facing shared room.
  *  - `bonusesJson` exists in the schema but the in-app tool doesn't read it.
  *    It's been there since 2023, originally added by a now-departed PM. About
  *    half the deals that have bonus structures fill it in; the other half

@@ -119,12 +119,20 @@ export default async function ShowDetailPage({
               </span>
             </div>
           </div>
-          <Link href={`/shows/${show.id}/settle`} className="mt-6 shrink-0">
-            <Button variant="brand" size="lg">
-              <FileSpreadsheet className="h-4 w-4" />
-              {settlement ? "View settlement" : "Settle show"}
-            </Button>
-          </Link>
+          <div className="mt-6 shrink-0 flex items-center gap-2">
+            <Link href={`/shows/${show.id}/settle`}>
+              <Button variant="secondary" size="lg">
+                <FileSpreadsheet className="h-4 w-4" />
+                Original settlement
+              </Button>
+            </Link>
+            <Link href={`/shows/${show.id}/review-room`}>
+              <Button variant="brand" size="lg">
+                <FileSpreadsheet className="h-4 w-4" />
+                Review Room
+              </Button>
+            </Link>
+          </div>
         </div>
 
         {/* Key numbers strip */}
@@ -144,7 +152,7 @@ export default async function ShowDetailPage({
             <AlertCircle className="h-4 w-4 text-amber-700 mt-0.5 shrink-0" />
             <div>
               <div className="eyebrow text-[10px] text-amber-800 mb-1.5">
-                Mariana&apos;s notes
+                Internal Venue Notes
               </div>
               <div className="text-[13px] text-ink-800 leading-relaxed">
                 {show.internalNotes}
@@ -158,7 +166,7 @@ export default async function ShowDetailPage({
           <Card className="md:col-span-2">
             <CardHeader>
               <div>
-                <CardTitle>Deal terms</CardTitle>
+                <CardTitle>Deal Terms</CardTitle>
                 <CardDescription>
                   What was negotiated. Mariana enters this from the email
                   thread with the agent.
@@ -189,7 +197,7 @@ export default async function ShowDetailPage({
                       }
                     />
                     <Field
-                      label="Expense cap"
+                      label="Expense Cap"
                       mono
                       value={
                         deal.expenseCap != null
@@ -198,7 +206,7 @@ export default async function ShowDetailPage({
                       }
                     />
                     <Field
-                      label="Hospitality cap"
+                      label="Hospitality Cap"
                       mono
                       value={
                         deal.hospitalityCap != null
@@ -241,10 +249,15 @@ export default async function ShowDetailPage({
                   {deal.dealNotesFreetext && (
                     <div>
                       <div className="eyebrow text-[10px] text-ink-500 mb-2">
-                        Deal notes (free text — what Mariana actually trusts)
+                        Shared Deal Language From Email
                       </div>
                       <div className="text-[13px] text-ink-800 bg-canvas-soft rounded-lg p-4 ring-1 ring-ink-200/50 leading-relaxed font-[450]" style={{ fontStyle: "italic" }}>
                         {deal.dealNotesFreetext}
+                      </div>
+                      <div className="mt-2 text-[11px] text-ink-400 leading-relaxed">
+                        These are negotiated deal terms Mariana entered from the
+                        agent email. They can appear in the shared Review Room;
+                        internal venue notes stay separate above.
                       </div>
                     </div>
                   )}
@@ -260,7 +273,7 @@ export default async function ShowDetailPage({
           {/* Artist & agent */}
           <Card>
             <CardHeader>
-              <CardTitle>Artist & agent</CardTitle>
+              <CardTitle>Artist & Agent</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <Field label="Artist" value={artist?.name ?? "—"} />
@@ -271,7 +284,7 @@ export default async function ShowDetailPage({
                 }
               />
               <Field
-                label="Prior shows here"
+                label="Prior Shows Here"
                 value={String(artist?.priorShowCount ?? 0)}
                 mono
               />
@@ -286,7 +299,7 @@ export default async function ShowDetailPage({
               {agent?.preferencesNotes && (
                 <div>
                   <div className="eyebrow text-[10px] text-ink-500 mb-2">
-                    Agent notes
+                    Agent Notes
                   </div>
                   <div className="text-[12.5px] text-ink-800 bg-amber-50/50 ring-1 ring-amber-200/50 rounded-lg p-3 leading-relaxed">
                     {agent.preferencesNotes}
@@ -299,7 +312,7 @@ export default async function ShowDetailPage({
           {/* Box office */}
           <Card>
             <CardHeader>
-              <CardTitle>Box office</CardTitle>
+              <CardTitle>Box Office</CardTitle>
               <CardDescription>From integrated ticketing.</CardDescription>
             </CardHeader>
             <CardContent>
@@ -369,8 +382,8 @@ export default async function ShowDetailPage({
                     <tr className="text-left border-b border-ink-100/80">
                       <th className="py-2 eyebrow text-[10px] text-ink-400 font-semibold">Category</th>
                       <th className="py-2 eyebrow text-[10px] text-ink-400 font-semibold text-right">Count</th>
-                      <th className="py-2 eyebrow text-[10px] text-ink-400 font-semibold text-right">Face value</th>
-                      <th className="py-2 eyebrow text-[10px] text-ink-400 font-semibold text-right">Counts toward gross?</th>
+                      <th className="py-2 eyebrow text-[10px] text-ink-400 font-semibold text-right">Face Value</th>
+                      <th className="py-2 eyebrow text-[10px] text-ink-400 font-semibold text-right">Counts Toward Gross?</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-ink-100/60">

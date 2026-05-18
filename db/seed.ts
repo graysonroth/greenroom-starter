@@ -1355,7 +1355,7 @@ async function main() {
       },
     ] as Bonus[]),
     dealNotesFreetext:
-      "$5,000 vs 80% of net after expenses, whichever greater. Expenses capped $2,500. Hospitality cap $500. +$1,000 bonus over $25k gross. Marketing recoup of $900 against gross. (Note added 3/19/25: this deal email was ambiguous — recoup interpretation disputed by WME, resolved with $720 concession.)",
+      "$5,000 vs 80% of net after expenses, whichever greater. Expenses capped $2,500. Hospitality cap $500. +$1,000 bonus over $25k gross. Marketing recoup of $900 against gross.",
     createdAt: coastalShowDate,
   });
   ticketSalesToInsert.push({
@@ -1421,7 +1421,7 @@ async function main() {
     grossBoxOffice: 19840,
     netBoxOffice: 17856,
     totalExpenses: 1600,
-    totalToArtist: 12285,
+    totalToArtist: 11565,
     recoupsJson: JSON.stringify(coastalRecoups),
     signoffText: "OK — but flag any future marketing recoup deals.",
     notes:
